@@ -14,6 +14,7 @@ import {
   Container,
   Typography,
   IconButton,
+  Grid,
 } from "@mui/material";
 
 import { AccountCircle } from "@mui/icons-material";
@@ -21,15 +22,13 @@ import { AccountCircle } from "@mui/icons-material";
 export default function App() {
   return (
     <>
-      <Box
-        padding="25px 30px 30px 50px"
-        style={{ backgroundColor: "black", minWidth: "fit-content" }}
-      >
+      <Box padding="25px 30px 30px 50px" style={{ backgroundColor: "black" }}>
         <Box
           display="flex"
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
+          marginBottom="30px"
         >
           <Typography variant="h3" color="white">
             Justly.
@@ -38,10 +37,19 @@ export default function App() {
             <AccountCircle style={{ fontSize: "45px" }} />
           </IconButton>
         </Box>
-        <Box display="grid" gridTemplateColumns="1fr minmax(500px, 1fr) 1fr">
+        {/* <Box display="grid" gridTemplateColumns="1fr minmax(500px, 1fr) 1fr">
           <SidePanel />
           <Post />
-        </Box>
+        </Box> */}
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <SidePanel />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Post />
+          </Grid>
+          <Grid item xs={12} md={3}></Grid>
+        </Grid>
       </Box>
 
       {/* <ElevationScroll>

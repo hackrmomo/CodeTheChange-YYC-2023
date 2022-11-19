@@ -24,7 +24,13 @@ export default function SidePanel() {
     <Box display="flex" flexDirection="column" style={{ letterSpacing: "1px" }}>
       <Paper
         component="form"
-        sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 200 }}
+        sx={{
+          p: "2px 4px",
+          display: "flex",
+          alignItems: "center",
+          width: 200,
+          marginBottom: "20px",
+        }}
       >
         <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
           <Search />
@@ -35,16 +41,25 @@ export default function SidePanel() {
           inputProps={{ "aria-label": "search google maps" }}
         />
       </Paper>
-      <Box style={{ fontWeight: "bold" }}>
-        <Public />
+      <Box
+        style={{
+          display: "flex",
+          fontWeight: "bold",
+          alignItems: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <Public style={{ marginRight: "10px" }} />
         WORLD TRENDING
       </Box>
-      <Box>
-        <Bolt />
+      <Box
+        style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
+      >
+        <Bolt style={{ marginRight: "10px" }} />
         NEW EVENTS
       </Box>
-      <Box>
-        <AddCircleOutline />
+      <Box style={{ display: "flex", alignItems: "center" }}>
+        <AddCircleOutline style={{ marginRight: "10px" }} />
         NEW POST
       </Box>
     </Box>
