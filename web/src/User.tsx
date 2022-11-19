@@ -13,7 +13,7 @@ import { AccountCircle } from "@mui/icons-material";
 export default function User() {
   return (
     <Box>
-      <IconButton aria-label="fingerprint" color="secondary">
+      <IconButton aria-label="user" style={{ color: "#8891A4" }}>
         <AccountCircle />
       </IconButton>
       @ilovetrees

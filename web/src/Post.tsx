@@ -20,7 +20,7 @@ export default function Post() {
         </Box>
       </Box>
       <Typography variant="h5"> STOP DEFORESTATION IN THE AMAZON</Typography>
-      <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"></img>
+      {/* <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"></img> */}
       <Typography>
         Every year, 1000000 trees are cut down to make room for agriculture and
         industry.

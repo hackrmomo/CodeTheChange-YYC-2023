@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Post from "./Post";
+import SidePanel from "./SidePanel";
 
 import {
   AppBar,
@@ -17,13 +18,31 @@ import { AccountCircle } from "@mui/icons-material";
 export default function App() {
   return (
     <>
-      <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <Typography variant="h3">Justly.</Typography>
-        <IconButton aria-label="fingerprint" color="secondary">
-          <AccountCircle />
-        </IconButton>
+      <Box
+        padding="25px 30px 30px 50px"
+        style={
+          {
+            // backgroundImage: `url(https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg)`,
+            // filter: "blur(50px)",
+          }
+        }
+      >
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Typography variant="h3">Justly.</Typography>
+          <IconButton aria-label="fingerprint" style={{ color: "#8891A4" }}>
+            <AccountCircle style={{ fontSize: "45px" }} />
+          </IconButton>
+        </Box>
+        <Box display="flex">
+          <SidePanel />
+          <Post />
+        </Box>
       </Box>
-      <Post />
       {/* <ElevationScroll>
         <AppBar>
           <Toolbar>YO</Toolbar>
