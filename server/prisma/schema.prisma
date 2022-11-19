@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(cuid())
+  handle           String    @unique
+  email            String    @unique
+  name             String
+  posts            Post[]
+  managedCharities Charity[]
+  votesMade        Vote[]
+}
+
+model Charity {
+  id            String         @id @default(cuid())
+  handle        String         @unique
+  name          String
+  markdown      String
+  manager       User           @relation(fields: [managerId], references: [id])
+  managerId     String
+  tagsOnCharity TagOnCharity[]
+}
+
+model Post {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  author      User        @relation(fields: [authorId], references: [id])
+  authorId    String
+  votes       Vote[]
+  tagsOnPost  TagOnPost[]
+}
+
+model Vote {
+  id     String @id @default(cuid())
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Tag {
+  id           String         @id @default(cuid())
+  name         String         @unique
+  color        String
+  TagOnPost    TagOnPost[]
+  TagOnCharity TagOnCharity[]
+}
+
+model TagOnPost {
+  id     String @id @default(cuid())
+  tag    Tag    @relation(fields: [tagId], references: [id])
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+}
+
+model TagOnCharity {
+  id        String  @id @default(cuid())
+  tag       Tag     @relation(fields: [tagId], references: [id])
+  tagId     String
+  charity   Charity @relation(fields: [charityId], references: [id])
+  charityId String
+}
