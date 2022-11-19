@@ -1,7 +1,10 @@
+// @ts-nocheck
+
 import React from "react";
 import "./App.css";
 import Post from "./Post";
 import SidePanel from "./SidePanel";
+import Blur from "react-blur";
 
 import {
   AppBar,
@@ -20,12 +23,7 @@ export default function App() {
     <>
       <Box
         padding="25px 30px 30px 50px"
-        style={
-          {
-            // backgroundImage: `url(https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg)`,
-            // filter: "blur(50px)",
-          }
-        }
+        style={{ backgroundColor: "black", minWidth: "fit-content" }}
       >
         <Box
           display="flex"
@@ -33,16 +31,19 @@ export default function App() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="h3">Justly.</Typography>
+          <Typography variant="h3" color="white">
+            Justly.
+          </Typography>
           <IconButton aria-label="fingerprint" style={{ color: "#8891A4" }}>
             <AccountCircle style={{ fontSize: "45px" }} />
           </IconButton>
         </Box>
-        <Box display="flex">
+        <Box display="grid" gridTemplateColumns="1fr minmax(500px, 1fr) 1fr">
           <SidePanel />
           <Post />
         </Box>
       </Box>
+
       {/* <ElevationScroll>
         <AppBar>
           <Toolbar>YO</Toolbar>

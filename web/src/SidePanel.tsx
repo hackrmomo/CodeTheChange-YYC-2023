@@ -21,10 +21,10 @@ import {
 
 export default function SidePanel() {
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" style={{ letterSpacing: "1px" }}>
       <Paper
         component="form"
-        sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+        sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 200 }}
       >
         <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
           <Search />
@@ -35,7 +35,7 @@ export default function SidePanel() {
           inputProps={{ "aria-label": "search google maps" }}
         />
       </Paper>
-      <Box>
+      <Box style={{ fontWeight: "bold" }}>
         <Public />
         WORLD TRENDING
       </Box>
