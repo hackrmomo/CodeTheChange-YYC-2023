@@ -1,34 +1,37 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  * {
-    font-family: "Inter";
-    font-style: normal;
-    color: #fff;
-    box-sizing: border-box;
-  }
+  font-family: "Inter";
+  font-style: normal;
+  color: #fff;
+  box-sizing: border-box;
 
-  .post-card {
-    position: relative;
+  position: relative;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    width: 669px;
-    height: 821px;
+  width: 669px;
+  height: 821px;
 
-    padding: 67px 78px;
+  padding: 67px 78px;
 
-    background: rgba(43, 43, 43, 0.39);
-    mix-blend-mode: normal;
-    border: 1px solid #1a1919;
-    border-radius: 16px;
-  }
+  background: rgba(43, 43, 43, 0.39);
+  mix-blend-mode: normal;
+  border: 1px solid #1a1919;
+  border-radius: 16px;
+
+ 
 
   .post-card-top {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 34px;
   }
 
   .user-info {
@@ -88,6 +91,11 @@ export const Wrapper = styled.div`
     mix-blend-mode: normal;
     border-radius: 16px;
     padding: 10px;
+    border: none;
+
+    box-sizing: border-box;
+
+    color: white;
   }
 
   .tags {
@@ -160,5 +168,9 @@ export const Wrapper = styled.div`
     background: #b8124d;
     mix-blend-mode: normal;
     border-radius: 16px;
+    cursor: pointer;
+  }
+
+  .submit-btn::hover {
   }
 `;

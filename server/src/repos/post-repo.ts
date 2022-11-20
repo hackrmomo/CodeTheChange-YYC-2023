@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { prisma } from '@src/server';
 import { Post } from "@prisma/client";
+import console from 'console';
 
 
 // **** Functions **** //
