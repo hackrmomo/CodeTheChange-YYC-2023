@@ -1,26 +1,45 @@
 import React from "react";
 import { styled } from "@mui/system";
 import { TextField as MuiTextField } from "@mui/material";
+import { useRef, useEffect} from 'react';
 
 interface IAuthContainerProps {
   close: () => void;
+  // dontClose: () => void;
 }
 
 export const AuthContainer = (props: IAuthContainerProps) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const  loginContainer = useRef(null)
+  let isLoginContainer: boolean = false;
+
   const { close } = props;
+  // const {dontClose} = props;
+  
   return <>
-    <RootContainer onClick={() => {
-      close();
+    
+    <RootContainer 
+    onClick={() => {
+      if(!isLoginContainer){
+        close();
+        
+      }
+      isLoginContainer=false;
+      console.log(isLoginContainer)
+
     }}>
-      <Container>
+
+      <Container onClick={()=> {
+        isLoginContainer = true
+        console.log(isLoginContainer)
+      }}>
         <p style={{fontFamily: 'Poppins, sans-serif', fontSize: '25px'}}>Justly.</p>
         <TextField placeholder="Email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} >
         </TextField>
         <TextField placeholder="Password" type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} >
         </TextField>
-        <p style={{fontSize: '12px'}}>create account</p>
+        <p style={{fontSize: '12px',cursor: 'pointer'}}>create account</p>
         <Button>LOGIN</Button>
       </Container>
     </RootContainer>
@@ -69,6 +88,7 @@ const RootContainer = styled('div')`
 `
 const Button = styled('div')`
   && {
+    cursor: pointer;
     text-align: center;
     font-size: 15px;
     align-items: center;
