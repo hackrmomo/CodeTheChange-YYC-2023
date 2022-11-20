@@ -2,7 +2,11 @@ import { Box, Typography, IconButton, Button } from "@mui/material";
 import User from "./User";
 import { LocationOn, Favorite } from "@mui/icons-material";
 
-export default function Post() {
+export default function Post(props: any) {
+  function handleTakeAction() {
+    props.setTakeAction(true);
+  }
+
   return (
     <Box
       sx={{
@@ -46,6 +50,7 @@ export default function Post() {
         </Box>
         <Button
           variant="contained"
+          onClick={handleTakeAction}
           sx={{
             borderRadius: '10px',
             backgroundColor: "#B8124D",
