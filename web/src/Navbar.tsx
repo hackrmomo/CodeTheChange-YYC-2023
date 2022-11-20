@@ -1,29 +1,51 @@
-import { Box, Typography, IconButton, Grid } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 
 import React from "react";
-import "./App.css";
-import Post from "./Post";
-import SidePanel from "./SidePanel";
-import { Link } from "react-router-dom";
+
 import { AccountCircle } from "@mui/icons-material";
+import { styled } from "@mui/system";
+import { AuthContainer } from "./components/AuthContainer";
 
 export default function Navbar() {
+  const [isAuthShown, setIsAuthShown] = React.useState(false);
   return (
-    <Box
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      marginBottom="30px"
-    >
-      <Link to="/">
-        <Typography className="" variant="h3" color="white">
-          Justly.
-        </Typography>
-      </Link>
-      <IconButton aria-label="fingerprint" style={{ color: "#8891A4" }}>
-        <AccountCircle style={{ fontSize: "45px" }} />
-      </IconButton>
-    </Box>
+    <>
+      {isAuthShown && <AuthContainer close={() => { setIsAuthShown(false) }} />}
+      <NavBarBox>
+        <Logo>Justly.</Logo>
+        <IconButton onClick={() => { setIsAuthShown(!isAuthShown) }} aria-label="account">
+          <AccountCircle />
+        </IconButton>
+      </NavBarBox>
+    </>
   );
 }
+
+const Logo = styled(Typography)`
+  && {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+  }
+`
+
+const NavBarBox = styled(Box)`
+  && {
+    position: fixed;
+    width: calc(100vw - 80px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    *{
+      color: #FFFFFF;
+    }
+    svg {
+      font-size: 45px; // icon size
+    }
+
+    z-index: 200;
+  }
+`
