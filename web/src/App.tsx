@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// @ts-nocheck
 
-function App() {
+import React from "react";
+import "./App.css";
+import Post from "./Post";
+import SidePanel from "./SidePanel";
+
+import {
+  Box,
+  Typography,
+  IconButton,
+  Grid,
+} from "@mui/material";
+
+import { AccountCircle } from "@mui/icons-material";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Box
+        padding="25px 30px 30px 50px"
+        style={{
+          backgroundImage:
+            "url(https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg)",
+          backdropFilter: "blur(1000px)",
+        }}
+      >
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+          marginBottom="30px"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Typography variant="h3" color="white">
+            Justly.
+          </Typography>
+          <IconButton aria-label="fingerprint" style={{ color: "#8891A4" }}>
+            <AccountCircle style={{ fontSize: "45px" }} />
+          </IconButton>
+        </Box>
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <SidePanel />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Post />
+          </Grid>
+          <Grid item xs={12} md={3}></Grid>
+        </Grid>
+      </Box>
+    </>
   );
 }
-
-export default App;
