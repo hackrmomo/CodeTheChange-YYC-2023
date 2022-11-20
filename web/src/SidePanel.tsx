@@ -20,7 +20,6 @@ export default function SidePanel() {
       <Box
         style={{
           display: "flex",
-          fontWeight: "bold",
           alignItems: "center",
           marginBottom: "10px",
         }}

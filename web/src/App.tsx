@@ -10,7 +10,7 @@ import MainPage from "./MainPage";
 import { Box, Typography, IconButton, Grid } from "@mui/material";
 
 import { AccountCircle } from "@mui/icons-material";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import axios from "axios";
 
 export default function App() {
@@ -24,15 +24,26 @@ export default function App() {
         }}
       >
         <Navbar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route
-            path="/world-trending"
-            element={<MainPage worldTrending={true} />}
-          />
-          <Route path="/new-events" element={<MainPage newEvents={true} />} />
-          <Route path="/new-post" element={<MainPage newPost={true} />} />
-        </Routes>
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <SidePanel />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/world-trending" />} />
+              <Route
+                path="/world-trending"
+                element={<MainPage worldTrending={true} />}
+              />
+              <Route
+                path="/new-events"
+                element={<MainPage newEvents={true} />}
+              />
+              <Route path="/new-post" element={<MainPage newPost={true} />} />
+            </Routes>
+          </Grid>
+          <Grid item xs={12} md={3}></Grid>
+        </Grid>
       </Box>
     </>
   );
