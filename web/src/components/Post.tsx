@@ -13,8 +13,7 @@ export default function Post() {
         minHeight: 0,
         borderRadius: "20px",
         backgroundColor: "#262525",
-      }}
-    >
+      }}>
       <Box display="flex" justifyContent="space-between" marginBottom="20px">
         <User />
         <Box display="flex" alignItems="center">
@@ -30,11 +29,9 @@ export default function Post() {
         height="100%"
         src="https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"
         style={{ marginBottom: "15px" }}
-        alt="rainforest"
-      ></img>
+        alt="rainforest"></img>
       <Typography marginBottom="50px">
-        Every year, 1000000 trees are cut down to make room for agriculture and
-        industry.
+        Every year, 1000000 trees are cut down to make room for agriculture and industry.
       </Typography>
       <Box display="flex" justifyContent="space-between">
         <Box>
@@ -50,8 +47,7 @@ export default function Post() {
             "&:hover": {
               backgroundColor: "#B8124D",
             },
-          }}
-        >
+          }}>
           Take Action
         </Button>
       </Box>

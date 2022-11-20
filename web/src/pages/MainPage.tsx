@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
 import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
+import { fetchTrendingPosts } from "../util/API";
+
+const MAX_POST_LIMIT = 10;
 
 export default function MainPage(props: any) {
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [number, setNumber] = useState(0);
+
+  const loadPosts = async () => {
+    setLoading(true);
+
+    const trendingPosts = await fetchTrendingPosts();
+    setNumber(trendingPosts.length);
+    setPosts(trendingPosts);
+
+    console.log(trendingPosts);
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    console.log("Use Effect!");
+    loadPosts();
+  });
+
   return (
     <>
       <Background />
@@ -14,7 +38,7 @@ export default function MainPage(props: any) {
             <SidePanel />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Post />
+            {!loading && <Post />}
           </Grid>
           <Grid item xs={12} md={3}></Grid>
         </Container>
