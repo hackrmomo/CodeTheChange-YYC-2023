@@ -48,14 +48,7 @@ function BasicRating() {
         "& > legend": { mt: 2 },
       }}
     >
-      <Typography component="legend"></Typography>
-      <Rating
-        name="simple-controlled"
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      />
+      <Rating name="read-only" value={value} readOnly />
     </Box>
   );
 }

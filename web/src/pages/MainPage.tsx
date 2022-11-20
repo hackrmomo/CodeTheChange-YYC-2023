@@ -24,7 +24,23 @@ export default function MainPage(props: any) {
     key: 2,
   };
 
-  const orgs = [charity1, charity2];
+  const charity3 = {
+    logo: "redcross.jpg",
+    name: "Scientology",
+    trustLevel: 1,
+    ratings: 4800,
+    key: 3,
+  };
+
+  const charity4 = {
+    logo: "redcross.jpg",
+    name: "Food Banks Canada",
+    trustLevel: 5,
+    ratings: 210,
+    key: 4,
+  };
+
+  const orgs = [charity1, charity2, charity3, charity4];
 
   return (
     <>

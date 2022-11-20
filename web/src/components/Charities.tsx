@@ -19,14 +19,16 @@ export default function Charities(props: any) {
           <Back onClick={handleAction}>&#10094;</Back>
           <BasicSelect></BasicSelect>
         </Buttons>
-        {props.charities.map((charity: any) => (
-          <Charity
-            img={charity.logo}
-            name={charity.name}
-            trust={charity.trustLevel}
-            numRatings={charity.ratings}
-          ></Charity>
-        ))}
+        <CharityLayout>
+          {props.charities.map((charity: any) => (
+            <Charity
+              img={charity.logo}
+              name={charity.name}
+              trust={charity.trustLevel}
+              numRatings={charity.ratings}
+            ></Charity>
+          ))}
+        </CharityLayout>
       </Card>
     </HeadingDiv>
   );
@@ -67,4 +69,11 @@ const Back = styled("button")`
   font-size: 20px;
   cursor: pointer;
   margin-left: 15px;
+`;
+
+const CharityLayout = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
