@@ -4,9 +4,9 @@ import SidePanel from "./SidePanel";
 import Navbar from "./Navbar";
 import MainPage from "./MainPage";
 
-import { styled } from "@mui/system";
-
 import { Box, Typography, IconButton, Grid } from "@mui/material";
+
+import { styled } from "@mui/system";
 
 import { AccountCircle } from "@mui/icons-material";
 import { Route, Routes, Navigate } from "react-router-dom";
