@@ -5,28 +5,31 @@ import MainPage from "./pages/MainPage";
 import { styled } from "@mui/system";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { NewPostPage } from "./pages/NewPostPage";
+import { InternalDataRefresh } from "./util/dataPersistor";
 
 export default function Router() {
   
   return (
     <>
-      <Container>
-        <ContainerInner>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Navigate to="/world-trending" />} />
-            <Route
-              path="/world-trending"
-              element={<MainPage worldTrending={true} />}
-            />
-            <Route
-              path="/new-events"
-              element={<MainPage newEvents={true} />}
-            />
-            <Route path="/new-post" element={<NewPostPage />} />
-          </Routes>
-        </ContainerInner>
-      </Container>
+      <InternalDataRefresh>
+        <Container>
+          <ContainerInner>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Navigate to="/world-trending" />} />
+              <Route
+                path="/world-trending"
+                element={<MainPage worldTrending={true} />}
+              />
+              <Route
+                path="/new-events"
+                element={<MainPage newEvents={true} />}
+              />
+              <Route path="/new-post" element={<NewPostPage />} />
+            </Routes>
+          </ContainerInner>
+        </Container>
+      </InternalDataRefresh>
     </>
   );
 }

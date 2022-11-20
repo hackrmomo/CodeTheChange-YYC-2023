@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { styled } from "@mui/system";
 import { TextField as MuiTextField, IconButton } from "@mui/material";
 import axios from "axios";
 
 import { Close } from "@mui/icons-material";
+import { DataContext } from "../util/dataPersistor";
 
 interface IAuthContainerProps {
   isVisible: boolean;
@@ -16,6 +17,7 @@ export const AuthContainer = (props: IAuthContainerProps) => {
   const [name, setName] = React.useState("");
   const [handle, setHandle] = React.useState("");
   const [isInCreateMode, setIsInCreateMode] = React.useState(false);
+  const {setUser, clearUser} = useContext(DataContext);
 
   const handleCreateAccount = async () => {
     const { data } = await axios
@@ -26,8 +28,13 @@ export const AuthContainer = (props: IAuthContainerProps) => {
       })
 
       console.log(data);
-      // TODO: handle errors
-      // TODO: handle success
+      if (data.token) {
+        setUser(data.user, data.token);
+        props.close();
+      } else {
+        alert("Error creating account");
+        clearUser();
+      }
     };
     
     const handleLogin = async () => {
@@ -38,8 +45,13 @@ export const AuthContainer = (props: IAuthContainerProps) => {
       })
       
       console.log(data);
-      // TODO: handle errors
-      // TODO: handle success
+      if (data.token) {
+        setUser(data.user, data.token);
+        props.close();
+      } else {
+        alert("Error logging in");
+        clearUser();
+      }
   };
 
   const { isVisible } = props;

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Router from "./Router";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { data, DataProvider } from "./util/dataPersistor";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter>
-    <Router />
+    <DataProvider value={data}>
+      <Router />
+    </DataProvider>
   </BrowserRouter>
 );
 
