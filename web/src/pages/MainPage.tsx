@@ -3,7 +3,7 @@ import Post from "../components/Post";
 import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
-import Charities from "./Charities";
+import Charities from "../components/Charities";
 
 export default function MainPage(props: any) {
   const [takeAction, setTakeAction] = React.useState(false);
@@ -35,10 +35,10 @@ export default function MainPage(props: any) {
             <SidePanel />
           </Grid>
           <Grid item xs={12} md={6}>
-            {!takeAction && (
-              <Post takeAction={takeAction} setTakeAction={setTakeAction} />
+            {!takeAction && <Post setTakeAction={setTakeAction} />}
+            {takeAction && (
+              <Charities charities={orgs} setTakeAction={setTakeAction} />
             )}
-            {takeAction && <Charities charities={orgs} />}
           </Grid>
           <Grid item xs={12} md={3}></Grid>
         </Container>

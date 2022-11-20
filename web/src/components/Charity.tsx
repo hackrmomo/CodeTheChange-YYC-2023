@@ -1,4 +1,4 @@
-import { BasicRating } from "./select";
+import { BasicRating } from "../select";
 
 export default function Charity(props: any) {
   const imageSrc = props.img;

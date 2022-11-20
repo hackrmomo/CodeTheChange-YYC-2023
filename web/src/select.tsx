@@ -18,7 +18,7 @@ function BasicSelect() {
   };
 
   return (
-    <Box sx={{ minWidth: 120, borderOutline: "white" }}>
+    <Box sx={{ minWidth: 120, outlineColor: "white" }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
           Sort By

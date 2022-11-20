@@ -1,9 +1,12 @@
-import { BasicSelect } from "./select";
+import { BasicSelect } from "../select";
 import Charity from "./Charity";
 import { styled } from "@mui/system";
 
 export default function Charities(props: any) {
-  console.log("hello");
+  function handleAction() {
+    props.setTakeAction(false);
+  }
+
   return (
     <HeadingDiv>
       <Heading>MAKE A DIFFERENCE</Heading>
@@ -13,7 +16,7 @@ export default function Charities(props: any) {
 
       <Card>
         <Buttons>
-          <Back>&#10094;</Back>
+          <Back onClick={handleAction}>&#10094;</Back>
           <BasicSelect></BasicSelect>
         </Buttons>
         {props.charities.map((charity: any) => (
