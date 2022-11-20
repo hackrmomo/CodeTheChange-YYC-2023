@@ -1,46 +1,71 @@
 import React from "react";
 import { styled } from "@mui/system";
-import { TextField as MuiTextField } from "@mui/material";
-import { useRef, useEffect} from 'react';
+import { TextField as MuiTextField, IconButton } from "@mui/material";
+import axios from "axios";
+
+import { Close } from "@mui/icons-material";
 
 interface IAuthContainerProps {
+  isVisible: boolean;
   close: () => void;
-  // dontClose: () => void;
 }
 
 export const AuthContainer = (props: IAuthContainerProps) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const  loginContainer = useRef(null)
-  let isLoginContainer: boolean = false;
+  const [name, setName] = React.useState("");
+  const [handle, setHandle] = React.useState("");
+  const [isInCreateMode, setIsInCreateMode] = React.useState(false);
 
-  const { close } = props;
-  // const {dontClose} = props;
-  
-  return <>
+  const handleCreateAccount = async () => {
+    const { data } = await axios
+      .post("http://localhost:3000/users/add", {
+        user: {
+          handle, email, name
+        }, password
+      })
+
+      console.log(data);
+      // TODO: handle errors
+      // TODO: handle success
+    };
     
-    <RootContainer 
-    onClick={() => {
-      if(!isLoginContainer){
-        close();
-        
-      }
-      isLoginContainer=false;
-      console.log(isLoginContainer)
+    const handleLogin = async () => {
+      const { data } = await axios
+      .post("http://localhost:3000/users/login", {
+        email,
+        password,
+      })
+      
+      console.log(data);
+      // TODO: handle errors
+      // TODO: handle success
+  };
 
-    }}>
+  const { isVisible } = props;
 
-      <Container onClick={()=> {
-        isLoginContainer = true
-        console.log(isLoginContainer)
-      }}>
-        <p style={{fontFamily: 'Poppins, sans-serif', fontSize: '25px'}}>Justly.</p>
-        <TextField placeholder="Email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} >
-        </TextField>
-        <TextField placeholder="Password" type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} >
-        </TextField>
-        <p style={{fontSize: '12px',cursor: 'pointer'}}>create account</p>
-        <Button>LOGIN</Button>
+  return <>
+    <RootContainer isVisible={isVisible}>
+      <Container>
+        <CloseButton onClick={props.close} aria-label="close">
+          <Close />
+        </CloseButton>
+        <StyledLogo>Justly.</StyledLogo>
+
+        <TextField placeholder="Email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+        <TextField placeholder="Password" type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+
+        {isInCreateMode && <TextField placeholder="@Handle" type="text" value={handle} onChange={(e) => { setHandle(e.target.value) }} />}
+        {isInCreateMode && <TextField placeholder="Name" type="text" value={name} onChange={(e) => { setName(e.target.value) }} />}
+
+        <CreateAccountButton onClick={() => { setIsInCreateMode(!isInCreateMode) }}>{isInCreateMode ? "ALREADY HAVE AN ACCOUNT? LOGIN" : "CREATE ACCOUNT"}</CreateAccountButton>
+        <LoginButton onClick={() => {
+          if (isInCreateMode) {
+            handleCreateAccount();
+          } else {
+            handleLogin();
+          }
+        }}>{isInCreateMode ? "CREATE ACCOUNT" : "LOGIN"}</LoginButton>
       </Container>
     </RootContainer>
   </>
@@ -48,6 +73,7 @@ export const AuthContainer = (props: IAuthContainerProps) => {
 
 const Container = styled('div')`
   && {
+    position: relative;
     text-align: center;
     color: white;
     background: rgba(26,25,25,0.85);
@@ -70,7 +96,7 @@ const Container = styled('div')`
   }
 `
 
-const RootContainer = styled('div')`
+const RootContainer = styled('div') <{ isVisible: boolean }>`
   && {
     position: fixed;
     display: flex;
@@ -84,6 +110,11 @@ const RootContainer = styled('div')`
     backdrop-filter: blur(10px);
     top: 0px;
     left: 0px;
+
+    opacity: ${(props) => props.isVisible ? 1 : 0};
+    pointer-events: ${(props) => props.isVisible ? "all" : "none"};
+
+    transition: all 300ms ease-in-out;
   }
 `
 const Button = styled('div')`
@@ -113,6 +144,41 @@ export const TextField = styled(MuiTextField)`
       border-radius: 16px;
       height: 3.5rem;
     }
-    height: 3.0rem;
+    input {
+      color: white;
+    }
+    height: 3.3rem;
+  }
+`
+
+const StyledLogo = styled('p')`
+  && { 
+    font-family: Poppins, sans-serif;
+    font-size: 25px;
+  }
+`
+
+const CreateAccountButton = styled('a')`
+  && {
+    cursor: pointer;
+    font-size: 12px;
+  }
+`
+
+const CloseButton = styled(IconButton)`
+  && {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    height: 20px;
+    width: 20px;
+    color: white;
+  }
+`
+
+const LoginButton = styled(Button)`
+  && {
+    width: 75vw;
+    max-width: 300px;
   }
 `

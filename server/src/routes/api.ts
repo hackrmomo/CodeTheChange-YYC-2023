@@ -18,6 +18,12 @@ userRouter.post(
   userRoutes.add,
 );
 
+// Login with user email and password
+userRouter.post(
+  userRoutes.paths.login,
+  userRoutes.login,
+);
+
 // Update one user
 userRouter.put(
   userRoutes.paths.update,

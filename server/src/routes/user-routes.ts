@@ -12,6 +12,7 @@ export const paths = {
   basePath: '/users',
   get: '/all',
   add: '/add',
+  login: '/login',
   update: '/update',
   delete: '/delete/:id',
 } as const;
@@ -35,6 +36,15 @@ export const add = async (req: IReq<{ user: User, password: string }>, res: IRes
   await userService.createUser(user, password);
   const userTokenCombo = (await userService.loginWithUserEmailAndPassword(user.email, password));
   return res.status(HttpStatusCodes.CREATED).send(userTokenCombo).end();
+};
+
+/**
+ * Login with user email and password.
+ */
+export const login = async (req: IReq<{ email: string, password: string }>, res: IRes) => {
+  const { email, password } = req.body;
+  const userTokenCombo = (await userService.loginWithUserEmailAndPassword(email, password));
+  return res.status(HttpStatusCodes.OK).send(userTokenCombo).end();
 };
 
 /**
