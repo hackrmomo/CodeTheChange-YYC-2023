@@ -12,18 +12,18 @@ import EnvVars from '@src/declarations/major/EnvVars';
 import HttpStatusCodes from '@src/declarations/major/HttpStatusCodes';
 import { NodeEnvs } from '@src/declarations/enums';
 import { RouteError } from '@src/declarations/classes';
-
+import { PrismaClient } from '@prisma/client';
 
 // **** Init express **** //
 
 const app = express();
 
+export const prisma = new PrismaClient();
 
 // **** Set basic express settings **** //
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser(EnvVars.cookieProps.secret));
 
 // Show routes called in console during development
 if (EnvVars.nodeEnv === NodeEnvs.Dev) {
@@ -39,7 +39,7 @@ if (EnvVars.nodeEnv === NodeEnvs.Production) {
 // **** Add API routes **** //
 
 // Add APIs
-app.use('/api', BaseRouter);
+app.use('/', BaseRouter);
 
 // Setup error handler
 app.use((
@@ -67,21 +67,6 @@ app.set('views', viewsDir);
 // Set static directory (js and css).
 const staticDir = path.join(__dirname, 'public');
 app.use(express.static(staticDir));
-
-// Nav to login pg by default
-app.get('/', (_: Request, res: Response) => {
-  res.sendFile('login.html', {root: viewsDir});
-});
-
-// Redirect to login if not logged in.
-app.get('/users', (req: Request, res: Response) => {
-  const jwt = req.signedCookies[EnvVars.cookieProps.key];
-  if (!jwt) {
-    res.redirect('/');
-  } else {
-    res.sendFile('users.html', {root: viewsDir});
-  }
-});
 
 
 // **** Export default **** //
