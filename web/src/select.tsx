@@ -11,18 +11,26 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 function BasicSelect() {
-  const [trusted, setTrusted] = React.useState("");
+  const [trust, setTrust] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setTrusted(event.target.value as string);
-    console.log(event.target.value);
+    setTrust(event.target.value as string);
   };
 
   return (
-    <Box sx={{ minWidth: 150 }}>
+    <Box sx={{ minWidth: 120, borderOutline: "white" }}>
       <FormControl fullWidth>
-        <InputLabel id="sort">Sort By</InputLabel>
-        <Select value={trusted} onChange={handleChange}>
+        <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
+          Sort By
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={trust}
+          label="Sort By"
+          onChange={handleChange}
+          sx={{ color: "white" }}
+        >
           <MenuItem value={10}>Most Trusted</MenuItem>
           <MenuItem value={20}>Least Trusted</MenuItem>
         </Select>
@@ -52,12 +60,4 @@ function BasicRating() {
   );
 }
 
-function TextButtons() {
-  return (
-    <Stack direction="row" spacing={2}>
-      <Button href="#text-buttons">&#8592;Back</Button>
-    </Stack>
-  );
-}
-
-export { BasicSelect, TextButtons, BasicRating };
+export { BasicSelect, BasicRating };

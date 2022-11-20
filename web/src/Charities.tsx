@@ -1,4 +1,4 @@
-import { BasicSelect, TextButtons } from "./select";
+import { BasicSelect } from "./select";
 import Charity from "./Charity";
 import { styled } from "@mui/system";
 
@@ -13,7 +13,7 @@ export default function Charities(props: any) {
 
       <Card>
         <Buttons>
-          <TextButtons></TextButtons>
+          <Back>&#10094;</Back>
           <BasicSelect></BasicSelect>
         </Buttons>
         {props.charities.map((charity: any) => (
@@ -39,8 +39,9 @@ const Heading = styled("h2")`
 `;
 
 const SubHeading = styled("p")`
-  font-weight: 500;
-  margin: 0;
+  font-weight: 200;
+  margin-top: 0;
+  margin-bottom: 10px;
 `;
 
 const Card = styled("div")`
@@ -51,4 +52,16 @@ const Card = styled("div")`
 const Buttons = styled("div")`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-right: 25px;
+`;
+
+const Back = styled("button")`
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
 `;
