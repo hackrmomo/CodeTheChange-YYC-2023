@@ -15,58 +15,6 @@ export default function SearchFieldChip() {
 
   console.log(receivers);
   return (
-    //     <Autocomplete
-    //       sx={{
-    //         p: "2px 4px",
-    //         display: "flex",
-    //         alignItems: "center",
-    //         width: 200,
-    //         marginBottom: "20px",
-    //         backgroundColor: "#262525",
-    //       }}
-    //       multiple
-    //       id="tags-filled"
-    //       options={[]}
-    //       defaultValue={[]}
-    //       freeSolo
-    //       onChange={(e, value) => setReceivers((state) => value)}
-    //       renderTags={(
-    //         value: any[],
-    //         getTagProps: (arg0: { index: any }) => JSX.IntrinsicAttributes
-    //       ) =>
-    //         value.map((option: any, index: any) => {
-    //           return (
-    //             <Chip
-    //               key={index}
-    //               variant="outlined"
-    //               label={option}
-    //               {...getTagProps({ index })}
-    //             />
-    //           );
-    //         })
-    //       }
-    //       renderInput={(params: any) => (
-    //         <>
-    //           <IconButton
-    //             type="button"
-    //             sx={{ p: "10px", color: "white" }}
-    //             aria-label="search"
-    //           >
-    //             <Search />
-    //           </IconButton>
-    //           <TextField
-    //             {...params}
-    //             size="small"
-    //             inputProps={{
-    //               style: { color: "white", height: "10px" },
-    //             }}
-    //             placeholder="Search Events"
-    //           />
-    //         </>
-    //       )}
-    //     />
-    //   );
-
     <Autocomplete
       sx={{
         p: "2px 4px",
