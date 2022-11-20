@@ -57,6 +57,8 @@ const RootContainer = styled('div')`
     background: #1A191933;
     z-index: 100;
     backdrop-filter: blur(10px);
+    top: 0px;
+    left: 0px;
   }
 `
 
