@@ -12,12 +12,13 @@ export default function Post() {
         minWidth: "fit-content",
         minHeight: 0,
         borderRadius: "20px",
-        backgroundColor: "#262525",
+        background: 'rgba(26,25,25,0.4)'
+
       }}
     >
       <Box display="flex" justifyContent="space-between" marginBottom="20px">
         <User />
-        <Box display="flex" alignItems="center">
+        <Box display="flex" alignItems="center" sx={{fontSize: "15px", color: "#929292"}}>
           <LocationOn />
           Brazil
         </Box>
@@ -46,6 +47,7 @@ export default function Post() {
         <Button
           variant="contained"
           sx={{
+            borderRadius: '10px',
             backgroundColor: "#B8124D",
             "&:hover": {
               backgroundColor: "#B8124D",

@@ -50,7 +50,7 @@ const ContainerOutter = styled('div')`
     left: 0px;
     width: 100%;
     backdrop-filter: blur(30px);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.65);
     padding: 100px 30px 30px 50px;
     box-sizing: border-box;
     height: 100%;
