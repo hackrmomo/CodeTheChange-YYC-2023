@@ -47,7 +47,6 @@ export default function Post() {
           variant="contained"
           sx={{
             backgroundColor: "#B8124D",
-            
             "&:hover": {
               backgroundColor: "#B8124D",
             },
