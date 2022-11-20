@@ -5,7 +5,7 @@ export default function Charity(props: any) {
   const imageSrc = props.img;
   return (
     <Container>
-      <img src={imageSrc} alt="Charity Logo"></img>
+      <Image src={imageSrc} alt="Charity Logo"></Image>
       {props.name.length > 17 ? (
         <Text>
           <Name>{props.name}</Name>
@@ -21,6 +21,12 @@ export default function Charity(props: any) {
     </Container>
   );
 }
+
+const Image = styled("img")`
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+`;
 
 const Container = styled("div")`
   margin: 30px;
