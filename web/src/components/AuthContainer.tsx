@@ -15,10 +15,13 @@ export const AuthContainer = (props: IAuthContainerProps) => {
       close();
     }}>
       <Container>
+        <p style={{fontFamily: 'Poppins, sans-serif', fontSize: '25px'}}>Justly.</p>
         <TextField placeholder="Email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} >
         </TextField>
         <TextField placeholder="Password" type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} >
         </TextField>
+        <p style={{fontSize: '12px'}}>create account</p>
+        <Button>LOGIN</Button>
       </Container>
     </RootContainer>
   </>
@@ -26,10 +29,13 @@ export const AuthContainer = (props: IAuthContainerProps) => {
 
 const Container = styled('div')`
   && {
-    background: #1A1919;
+    text-align: center;
+    color: white;
+    background: rgba(26,25,25,0.85);
     height: 60vh;
-    width: 60vw;
-    max-width: 700px;
+    width: 80vw;
+    max-width: 400px;
+    padding: 10px;
     border-radius: 16px;
     align-self: center;
     justify-self: center;
@@ -61,15 +67,32 @@ const RootContainer = styled('div')`
     left: 0px;
   }
 `
+const Button = styled('div')`
+  && {
+    text-align: center;
+    font-size: 15px;
+    align-items: center;
+    background-color: #B8124D;
+    float: right;
+    max-width: 106px;
+    height: 40px;
+    line-height: 40px;
+    padding: 4px;
+    border-radius: 14px;
+    vertical-align: baseline;
+  }
+`
 
 export const TextField = styled(MuiTextField)`
   && {
     background: #454545;
     border-radius: 16px;
+    width: 75vw;
+    max-width: 300px;
     fieldset {
       border-radius: 16px;
       height: 3.5rem;
     }
-    height: 3.3rem;
+    height: 3.0rem;
   }
 `
