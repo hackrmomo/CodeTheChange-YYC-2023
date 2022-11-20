@@ -57,11 +57,10 @@ export const getCharitiesMatchingSearch = async (search: string): Promise<Charit
   });
 };
 
-export const createCharity = async (charity: Charity, tags: string[]): Promise<Charity> => {
-  // TODO: get current user and set as owner
+export const createCharity = async (charity: Charity, tags: string[], userId: string): Promise<Charity> => {
 
   const resultantCharity = await prisma.charity.create({
-    data: charity,
+    data: { ...charity, managerId: userId },
   });
   await attachTagsToCharity(resultantCharity, tags);
   return resultantCharity;

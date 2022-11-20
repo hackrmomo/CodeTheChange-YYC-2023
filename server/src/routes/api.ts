@@ -24,6 +24,12 @@ userRouter.post(
   userRoutes.login,
 );
 
+// Refresh user token
+userRouter.post(
+  userRoutes.paths.refresh,
+  userRoutes.refresh,
+);
+
 // Update one user
 userRouter.put(
   userRoutes.paths.update,
