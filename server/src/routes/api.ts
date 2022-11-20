@@ -16,6 +16,12 @@ userRouter.get(userRoutes.paths.get, userRoutes.getAll);
 // Add one user
 userRouter.post(userRoutes.paths.add, userRoutes.add);
 
+// Login with user email and password
+userRouter.post(
+  userRoutes.paths.login,
+  userRoutes.login,
+);
+
 // Update one user
 userRouter.put(userRoutes.paths.update, userRoutes.update);
 

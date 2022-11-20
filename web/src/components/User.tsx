@@ -14,7 +14,7 @@ export default function User() {
       >
         <AccountCircle sx={{ fontSize: "50px" }} />
       </IconButton>
-      @ilovetrees
+      @ilovetrees66
     </Box>
   );
 }
