@@ -2,6 +2,9 @@ import { Box, Typography, IconButton } from "@mui/material";
 
 import React from "react";
 
+import Post from "./Post";
+import SidePanel from "./SidePanel";
+import { Link } from "react-router-dom";
 import { AccountCircle } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import { AuthContainer } from "./components/AuthContainer";
@@ -12,7 +15,11 @@ export default function Navbar() {
     <>
       {isAuthShown && <AuthContainer close={() => { setIsAuthShown(false) }} />}
       <NavBarBox>
-        <Logo>Justly.</Logo>
+        <Logo>
+          <Link to="/">
+            Justly.
+          </Link>
+        </Logo>
         <IconButton onClick={() => { setIsAuthShown(!isAuthShown) }} aria-label="account">
           <AccountCircle />
         </IconButton>
@@ -26,6 +33,9 @@ const Logo = styled(Typography)`
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 36px;
+    a {
+      text-decoration: none;
+    }
   }
 `
 

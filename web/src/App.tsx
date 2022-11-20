@@ -4,14 +4,13 @@ import SidePanel from "./SidePanel";
 import Navbar from "./Navbar";
 import MainPage from "./MainPage";
 
-import { Box, Typography, IconButton, Grid } from "@mui/material";
-
 import { styled } from "@mui/system";
+
+import { Box, Typography, IconButton, Grid } from "@mui/material";
 
 import { AccountCircle } from "@mui/icons-material";
 import { Route, Routes, Navigate } from "react-router-dom";
 import axios from "axios";
-import { AuthContainer } from "./components/AuthContainer";
 
 export default function App() {
 
@@ -21,12 +20,15 @@ export default function App() {
         <ContainerInner>
           <Navbar />
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<Navigate to="/world-trending" />} />
             <Route
               path="/world-trending"
               element={<MainPage worldTrending={true} />}
             />
-            <Route path="/new-events" element={<MainPage newEvents={true} />} />
+            <Route
+              path="/new-events"
+              element={<MainPage newEvents={true} />}
+            />
             <Route path="/new-post" element={<MainPage newPost={true} />} />
           </Routes>
         </ContainerInner>
