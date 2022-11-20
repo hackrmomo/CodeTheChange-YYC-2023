@@ -1,67 +1,62 @@
-import {
-  AppBar,
-  Toolbar,
-  Paper,
-  useScrollTrigger,
-  Box,
-  Container,
-  Typography,
-  IconButton,
-  InputBase,
-} from "@mui/material";
+import { Box } from "@mui/material";
 
-import {
-  LocationOn,
-  Favorite,
-  Search,
-  Public,
-  Bolt,
-  AddCircleOutline,
-} from "@mui/icons-material";
+import { Public, Bolt, AddCircleOutline } from "@mui/icons-material";
+
+import SearchFieldChip from "./SearchFieldChip";
+import { NavLink } from "react-router-dom";
+import "./SidePanel.css";
 
 export default function SidePanel() {
+  const selected = {
+    fontWeight: "bold",
+  };
   return (
-    <Box display="flex" flexDirection="column" style={{ letterSpacing: "1px" }}>
-      <Paper
-        component="form"
-        sx={{
-          p: "2px 4px",
-          display: "flex",
-          alignItems: "center",
-          width: 200,
-          marginBottom: "20px",
-        }}
-      >
-        <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-          <Search />
-        </IconButton>
-        <InputBase
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Search Events"
-          inputProps={{ "aria-label": "search google maps" }}
-        />
-      </Paper>
+    <nav
+      style={{ display: "flex", flexDirection: "column", letterSpacing: "1px" }}
+    >
+      <SearchFieldChip />
       <Box
         style={{
           display: "flex",
-          fontWeight: "bold",
           alignItems: "center",
           marginBottom: "10px",
         }}
       >
-        <Public style={{ marginRight: "10px" }} />
-        WORLD TRENDING
+        <NavLink
+          to="/world-trending"
+          style={({ isActive }) => (isActive ? selected : undefined)}
+          className="navlink"
+          end
+        >
+          <Public style={{ marginRight: "10px" }} />
+          WORLD TRENDING
+        </NavLink>
       </Box>
       <Box
         style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
       >
-        <Bolt style={{ marginRight: "10px" }} />
-        NEW EVENTS
+        <NavLink
+          to="/new-events"
+          style={({ isActive }) => (isActive ? selected : undefined)}
+          className="navlink"
+          end
+        >
+          {" "}
+          <Bolt style={{ marginRight: "10px" }} />
+          NEW EVENTS
+        </NavLink>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <AddCircleOutline style={{ marginRight: "10px" }} />
-        NEW POST
+        <NavLink
+          to="/new-post"
+          style={({ isActive }) => (isActive ? selected : undefined)}
+          className="navlink"
+          end
+        >
+          <AddCircleOutline style={{ marginRight: "10px" }} />
+          NEW POST
+        </NavLink>
       </Box>
-    </Box>
+    </nav>
   );
 }

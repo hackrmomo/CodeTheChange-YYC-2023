@@ -1,10 +1,5 @@
 import {
-  AppBar,
-  Toolbar,
-  useScrollTrigger,
   Box,
-  Container,
-  Typography,
   IconButton,
 } from "@mui/material";
 

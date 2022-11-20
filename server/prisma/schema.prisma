@@ -11,13 +11,15 @@ datasource db {
 }
 
 model User {
-  id               String    @id @default(cuid())
-  handle           String    @unique
-  email            String    @unique
+  id               String       @id @default(cuid())
+  handle           String       @unique
+  email            String       @unique
+  hashedPass       String       @default("not set")
   name             String
   posts            Post[]
   managedCharities Charity[]
   votesMade        Vote[]
+  userTokens       UserTokens[]
 }
 
 model Charity {
@@ -25,7 +27,7 @@ model Charity {
   handle        String         @unique
   name          String
   markdown      String
-  manager       User           @relation(fields: [managerId], references: [id])
+  manager       User           @relation(fields: [managerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   managerId     String
   tagsOnCharity TagOnCharity[]
 }
@@ -34,17 +36,18 @@ model Post {
   id          String      @id @default(cuid())
   title       String
   description String
-  author      User        @relation(fields: [authorId], references: [id])
+  author      User        @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   authorId    String
+  createdAt   DateTime    @default(now())
   votes       Vote[]
   tagsOnPost  TagOnPost[]
 }
 
 model Vote {
   id     String @id @default(cuid())
-  post   Post   @relation(fields: [postId], references: [id])
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   postId String
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
 }
 
@@ -58,16 +61,24 @@ model Tag {
 
 model TagOnPost {
   id     String @id @default(cuid())
-  tag    Tag    @relation(fields: [tagId], references: [id])
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   tagId  String
-  post   Post   @relation(fields: [postId], references: [id])
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   postId String
 }
 
 model TagOnCharity {
   id        String  @id @default(cuid())
-  tag       Tag     @relation(fields: [tagId], references: [id])
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   tagId     String
-  charity   Charity @relation(fields: [charityId], references: [id])
+  charity   Charity @relation(fields: [charityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   charityId String
+}
+
+model UserTokens {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
 }
