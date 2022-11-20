@@ -1,19 +1,11 @@
 import React from "react";
-import Post from "./Post";
-import SidePanel from "./SidePanel";
 import Navbar from "./Navbar";
 import MainPage from "./MainPage";
 
-import { Box, Typography, IconButton, Grid } from "@mui/material";
-
 import { styled } from "@mui/system";
-
-import { AccountCircle } from "@mui/icons-material";
 import { Route, Routes, Navigate } from "react-router-dom";
-import axios from "axios";
 
 export default function App() {
-
   return (
     <>
       <Container>
@@ -39,10 +31,6 @@ export default function App() {
 
 const Container = styled('div')`
   && {
-    /* background-image: url("https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"); */
-    /* background-position: center center; */
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
     height: 100vh;
     z-index: 10;
   }
