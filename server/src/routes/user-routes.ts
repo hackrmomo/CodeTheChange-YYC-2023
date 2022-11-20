@@ -12,6 +12,8 @@ export const paths = {
   basePath: '/users',
   get: '/all',
   add: '/add',
+  refresh: '/refresh',
+  login: '/login',
   update: '/update',
   delete: '/delete/:id',
 } as const;
@@ -38,6 +40,25 @@ export const add = async (req: IReq<{ user: User, password: string }>, res: IRes
 };
 
 /**
+ * Login with user email and password.
+ */
+export const login = async (req: IReq<{ email: string, password: string }>, res: IRes) => {
+  const { email, password } = req.body;
+  const userTokenCombo = (await userService.loginWithUserEmailAndPassword(email, password));
+  return res.status(HttpStatusCodes.OK).send(userTokenCombo).end();
+};
+
+/**
+ * Refresh user token.
+ */
+export const refresh = async (req: IReq<{ token: string }>, res: IRes) => {
+  const token = req.headers.authorization;
+  if (!token) return res.status(HttpStatusCodes.UNAUTHORIZED).end();
+  const user = (await userService.validateToken(token.split(' ')[1]));
+  return res.status(HttpStatusCodes.OK).send({ user, token }).end();
+};
+
+/**
  * Update one user.
  */
 export const update = async (req: IReq<{ user: User, password: string }>, res: IRes) => {
@@ -52,7 +73,7 @@ export const update = async (req: IReq<{ user: User, password: string }>, res: I
 /**
  * Delete one user.
  */
-export const _delete = async (req: IReq, res: IRes) =>{
+export const _delete = async (req: IReq, res: IRes) => {
   const id = req.params.id;
   if (await userService.reqIsAuthenticated(req)) {
     await userService.deleteUser(id);

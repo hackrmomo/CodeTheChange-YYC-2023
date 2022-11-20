@@ -1,26 +1,45 @@
 import { Box, Typography, IconButton } from "@mui/material";
-
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { AccountCircle } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import { AuthContainer } from "./AuthContainer";
+import { DataContext } from "../util/dataPersistor";
 
 export default function Navbar() {
   const [isAuthShown, setIsAuthShown] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const {user, token} = useContext(DataContext);
+
+  useEffect(() => {
+    if (token && user) {
+      setIsLoggedIn(true);
+    }
+  }, [user, token]);
+
   return (
     <>
-      {isAuthShown && <AuthContainer close={() => { setIsAuthShown(false) }} />}
+      <AuthContainer isVisible={isAuthShown} close={() => { setIsAuthShown(false) }} />
       <NavBarBox>
         <Logo>
           <Link to="/">
             Justly.
           </Link>
         </Logo>
-        <IconButton onClick={() => { setIsAuthShown(!isAuthShown) }} aria-label="account">
-          <AccountCircle />
-        </IconButton>
+        {isLoggedIn ?
+          <Handle>
+            <span onClick={() => {
+              // TODO: show user profile
+            }}>
+              @{user!.handle}
+            </span>
+          </Handle>
+          :
+          <IconButton onClick={() => { setIsAuthShown(!isAuthShown) }} aria-label="account">
+            <AccountCircle />
+          </IconButton>
+        }
       </NavBarBox>
     </>
   );
@@ -33,6 +52,17 @@ const Logo = styled(Typography)`
     font-size: 36px;
     a {
       text-decoration: none;
+    }
+  }
+`
+
+const Handle = styled(Typography)`
+  && {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    span {
+      cursor: pointer;
     }
   }
 `
