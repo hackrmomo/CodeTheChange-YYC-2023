@@ -22,7 +22,14 @@ import { AccountCircle } from "@mui/icons-material";
 export default function App() {
   return (
     <>
-      <Box padding="25px 30px 30px 50px" style={{ backgroundColor: "black" }}>
+      <Box
+        padding="25px 30px 30px 50px"
+        style={{
+          backgroundImage:
+            "url(https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg)",
+          backdropFilter: "blur(1000px)",
+        }}
+      >
         <Box
           display="flex"
           flexDirection="row"
@@ -37,10 +44,6 @@ export default function App() {
             <AccountCircle style={{ fontSize: "45px" }} />
           </IconButton>
         </Box>
-        {/* <Box display="grid" gridTemplateColumns="1fr minmax(500px, 1fr) 1fr">
-          <SidePanel />
-          <Post />
-        </Box> */}
         <Grid container>
           <Grid item xs={12} md={3}>
             <SidePanel />
@@ -51,29 +54,6 @@ export default function App() {
           <Grid item xs={12} md={3}></Grid>
         </Grid>
       </Box>
-
-      {/* <ElevationScroll>
-        <AppBar>
-          <Toolbar>YO</Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Post /> */}
     </>
   );
-}
-
-function ElevationScroll(props: any) {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
 }
