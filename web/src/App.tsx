@@ -11,33 +11,30 @@ import { styled } from "@mui/system";
 import { AccountCircle } from "@mui/icons-material";
 import { Route, Routes, Navigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContainer } from "./components/AuthContainer";
 
 export default function App() {
-  console.log(axios.get("http://localhost:3000/users/all"));
+  const [isAuthShown, setIsAuthShown] = React.useState(false);
+
   return (
     <>
+      {isAuthShown && <AuthContainer close={() => { setIsAuthShown(false) }} />}
       <Container>
         <ContainerInner>
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            alignItems="center"
-            marginBottom="30px"
+          <NavBar
           >
             <Logo>Justly.</Logo>
-            <IconButton aria-label="fingerprint" style={{ color: "#8891A4" }}>
-              <AccountCircle style={{ fontSize: "45px" }} />
+            <IconButton onClick={() => { setIsAuthShown(!isAuthShown) }} aria-label="account">
+              <AccountCircle />
             </IconButton>
-          </Box>
+          </NavBar>
           <Grid container>
             <Grid item xs={12} md={3}>
               <SidePanel />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <CenteredGrid item xs={12} md={6}>
               <Post />
-            </Grid>
-            <Grid item xs={12} md={3}></Grid>
+            </CenteredGrid>
           </Grid>
         </ContainerInner>
       </Container>
@@ -60,6 +57,7 @@ const Container = styled('div')`
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    z-index: 10;
   }
   `
 
@@ -70,5 +68,29 @@ const ContainerInner = styled('div')`
     padding: 25px 30px 30px 50px;
     box-sizing: border-box;
     height: 100%;
+  }
+`
+
+const NavBar = styled(Box)`
+  && {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    *{
+      color: #FFFFFF;
+    }
+    svg {
+      font-size: 45px; // icon size
+    }
+  }
+`
+
+const CenteredGrid = styled(Grid)`
+  && {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
