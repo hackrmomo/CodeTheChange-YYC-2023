@@ -93,7 +93,7 @@ export const getUserUpvotedPosts = async (id: string): Promise<Post[] | null> =>
 
 export const createUserToken = async (email: string, password: string): Promise<string | null> => {
   const user = await getUserByEmail(email);
-  if (user && await pwdUtil.compare(password, user.hashedPass as string)) {
+  if (user && await pwdUtil.compare(password, user.hashedPass)) {
     const token = await jwtUtil.sign(user);
     await prisma.userTokens.create({
       data: {

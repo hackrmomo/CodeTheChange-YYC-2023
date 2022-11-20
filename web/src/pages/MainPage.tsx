@@ -1,6 +1,6 @@
 import React from "react";
-import Post from "./Post";
-import SidePanel from "./SidePanel";
+import Post from "../components/Post";
+import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import Charities from "./Charities";

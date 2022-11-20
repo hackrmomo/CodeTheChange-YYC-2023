@@ -1,8 +1,8 @@
-import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 
 import 'express-async-errors';
 
@@ -22,6 +22,7 @@ export const prisma = new PrismaClient();
 
 // **** Set basic express settings **** //
 
+app.use(cors({ origin: "http://localhost:3001"}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 

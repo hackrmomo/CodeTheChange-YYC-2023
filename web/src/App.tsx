@@ -46,14 +46,3 @@ const Container = styled("div")`
     z-index: 10;
   }
 `;
-
-const ContainerInner = styled("div")`
-  && {
-    backdrop-filter: blur(30px);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 25px 30px 30px 50px;
-    box-sizing: border-box;
-    height: 100%;
-    z-index: 20;
-  }
-`;
