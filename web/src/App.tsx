@@ -4,14 +4,9 @@ import React from "react";
 import "./App.css";
 import Post from "./Post";
 import SidePanel from "./SidePanel";
-import Blur from "react-blur";
 
 import {
-  AppBar,
-  Toolbar,
-  useScrollTrigger,
   Box,
-  Container,
   Typography,
   IconButton,
   Grid,

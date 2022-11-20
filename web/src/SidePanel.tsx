@@ -1,19 +1,8 @@
 import {
-  AppBar,
-  Toolbar,
-  Paper,
-  useScrollTrigger,
   Box,
-  Container,
-  Typography,
-  IconButton,
-  InputBase,
 } from "@mui/material";
 
 import {
-  LocationOn,
-  Favorite,
-  Search,
   Public,
   Bolt,
   AddCircleOutline,

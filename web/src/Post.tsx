@@ -1,4 +1,4 @@
-import { Box, Card, Typography, IconButton, Button } from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import User from "./User";
 import { LocationOn, Favorite } from "@mui/icons-material";
 
@@ -30,6 +30,7 @@ export default function Post() {
         height="100%"
         src="https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"
         style={{ marginBottom: "15px" }}
+        alt="rainforest"
       ></img>
       <Typography marginBottom="50px">
         Every year, 1000000 trees are cut down to make room for agriculture and

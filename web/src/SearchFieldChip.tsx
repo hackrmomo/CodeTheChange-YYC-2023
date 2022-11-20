@@ -3,29 +3,17 @@
 import { Autocomplete, TextField, Chip } from "@mui/material";
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
-  Paper,
-  useScrollTrigger,
-  Box,
-  Container,
-  Typography,
   IconButton,
-  InputBase,
 } from "@mui/material";
 
 import {
-  LocationOn,
-  Favorite,
   Search,
-  Public,
-  Bolt,
-  AddCircleOutline,
 } from "@mui/icons-material";
 
 export default function SearchFieldChip() {
   const [receivers, setReceivers] = React.useState<string[]>([]);
 
+  console.log(receivers);
   return (
     //     <Autocomplete
     //       sx={{
