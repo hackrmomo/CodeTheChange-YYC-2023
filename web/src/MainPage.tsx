@@ -1,12 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import SidePanel from "./SidePanel";
-import Navbar from "./Navbar";
-
-import { Box, Typography, IconButton, Grid } from "@mui/material";
-
-import { AccountCircle } from "@mui/icons-material";
-import { Route, Routes } from "react-router-dom";
+import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 
 export default function MainPage(props: any) {

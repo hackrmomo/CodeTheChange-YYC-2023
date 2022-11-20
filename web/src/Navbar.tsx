@@ -2,8 +2,6 @@ import { Box, Typography, IconButton } from "@mui/material";
 
 import React from "react";
 
-import Post from "./Post";
-import SidePanel from "./SidePanel";
 import { Link } from "react-router-dom";
 import { AccountCircle } from "@mui/icons-material";
 import { styled } from "@mui/system";

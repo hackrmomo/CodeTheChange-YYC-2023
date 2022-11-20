@@ -5,10 +5,8 @@ import { Public, Bolt, AddCircleOutline } from "@mui/icons-material";
 import SearchFieldChip from "./SearchFieldChip";
 import { NavLink } from "react-router-dom";
 import "./SidePanel.css";
-import { useNavigate } from "react-router-dom";
 
 export default function SidePanel() {
-  const navigate = useNavigate();
   const selected = {
     fontWeight: "bold",
   };
