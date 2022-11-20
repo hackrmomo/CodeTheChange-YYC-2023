@@ -8,11 +8,11 @@ export default function Post() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        border: "1px solid grey",
         padding: "40px 50px",
         minWidth: "fit-content",
         minHeight: 0,
-        borderRadius: "10px",
+        borderRadius: "20px",
+        backgroundColor: "#262525",
       }}
     >
       <Box display="flex" justifyContent="space-between" marginBottom="20px">
