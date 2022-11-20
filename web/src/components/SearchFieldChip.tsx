@@ -20,11 +20,12 @@ export default function SearchFieldChip() {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 200,
+        width: 230,
         marginBottom: "20px",
         backgroundColor: "#262525",
-        borderRadius: "20px",
+        borderRadius: "6px",
       }}
+
       multiple
       id="tags-filled"
       options={[]}
@@ -39,7 +40,7 @@ export default function SearchFieldChip() {
           return (
             <Chip
               key={index}
-              variant="outlined"
+              variant="standard"
               label={option}
               {...getTagProps({ index })}
             />
@@ -55,16 +56,19 @@ export default function SearchFieldChip() {
           >
             <Search />
           </IconButton>
-          <TextField
+          <TextField   variant="standard" 
+
             {...params}
             sx={{
-              input: { color: "white", border: 0, outline: 0 },
+              
+              input: { color: "white", border: 0, outline: 0,fontSize: '14px' },
               div: { color: "white" },
               svg: { color: "white" },
               path: { color: "white" },
             }}
             size="small"
-            placeholder="Search Events"
+            placeholder="Search Causes"
+            InputProps={{ disableUnderline: true }}
           />
         </>
       )}
