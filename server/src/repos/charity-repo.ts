@@ -22,6 +22,10 @@ export const getCharityByHandle = async (handle: string): Promise<Charity | null
   });
 };
 
+export const getAllCharities = async (): Promise<Charity[]> => {
+  return await prisma.charity.findMany();
+};
+
 export const getCharitiesByMatchedTags = async (tags: string[]): Promise<Charity[] | null> => {
   return await prisma.charity.findMany({
     where: {
@@ -66,7 +70,19 @@ export const createCharity = async (charity: Charity, tags: string[], userId: st
   return resultantCharity;
 };
 
-export const updateCharity = async (charity: Charity, tags: string[]): Promise<Charity> => {
+export const updateCharity = async (charity: Charity, tags: string[], userId: string): Promise<Charity> => {
+
+  // verify that the user is the manager of the charity
+  const charityToUpdate = await prisma.charity.findUnique({
+    where: {
+      id: charity.id,
+    },
+  });
+  
+  if (charityToUpdate?.managerId !== userId) {
+    throw new Error('User is not the manager of this charity');
+  }
+  
   const resultantCharity = await prisma.charity.update({
     where: {
       id: charity.id,
@@ -77,7 +93,19 @@ export const updateCharity = async (charity: Charity, tags: string[]): Promise<C
   return resultantCharity;
 };
 
-export const deleteCharity = async (id: string): Promise<Charity> => {
+export const deleteCharity = async (id: string, userId: string): Promise<Charity> => {
+
+  // verify that the user is the manager of the charity
+  const charityToDelete = await prisma.charity.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  if (charityToDelete?.managerId !== userId) {
+    throw new Error('User is not the manager of this charity');
+  }
+
   return await prisma.charity.delete({
     where: {
       id: id,

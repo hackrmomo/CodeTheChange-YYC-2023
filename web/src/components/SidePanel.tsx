@@ -55,6 +55,16 @@ export default function SidePanel() {
           NEW POST
         </StyledNavLink>
       </Box>
+      <Box style={{ display: "flex", alignItems: "center" }}>
+        <StyledNavLink
+          to="/charity/red-cross"
+          style={({ isActive }) => (isActive ? selected : undefined)}
+          end
+        >
+          <AddCircleOutline style={{ marginRight: "10px" }} />
+          DEBUG
+        </StyledNavLink>
+      </Box>
     </nav>
   );
 }

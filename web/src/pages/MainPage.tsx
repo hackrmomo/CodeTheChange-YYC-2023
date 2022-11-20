@@ -4,10 +4,19 @@ import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import Charities from "../components/Charities";
+import { CharityPage } from "./CharityPage";
+import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
-export default function MainPage(props: any) {
+interface MainPageProps {
+  worldTrending?: boolean;
+  newEvents?: boolean;
+  newPost?: boolean;
+  charity?: boolean;
+}
+
+export default function MainPage(props: MainPageProps) {
   const [takeAction, setTakeAction] = React.useState(false);
-
   const charity1 = {
     logo: "/redcross.jpg",
     name: "Canadian RedCross",
@@ -42,9 +51,27 @@ export default function MainPage(props: any) {
 
   const orgs = [charity1, charity2, charity3, charity4];
 
+  const { worldTrending, charity } = props;
+  const [charityPageVisible, setCharityPageVisible] = React.useState(false);
+
+  useEffect(() => {
+    setCharityPageVisible(charity || false);
+  }, [charity]);
+
+  useEffect(() => {
+    if (worldTrending) {
+      window.history.pushState({}, "", "/world-trending");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <Background />
+      <CharityPage isVisible={charityPageVisible} close={() => {
+        setCharityPageVisible(false);
+        window.history.back();
+      }} />
       <ContainerOutter>
         <Container container>
           <Grid item xs={12} md={3}>
@@ -59,6 +86,7 @@ export default function MainPage(props: any) {
           <Grid item xs={12} md={3}></Grid>
         </Container>
       </ContainerOutter>
+      <Outlet />
     </>
   );
 }
