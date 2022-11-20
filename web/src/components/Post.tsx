@@ -1,15 +1,25 @@
 import { Box, Typography, IconButton, Button } from "@mui/material";
 import User from "./User";
 import { LocationOn, Favorite } from "@mui/icons-material";
+import { useState } from "react";
+
 
 export default function Post() {
+  const [liked, setAsLiked] = useState(false);
+
+  const handleClick = () => {
+      setAsLiked(true);
+  };
+
   return (
+
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         padding: "40px 50px",
         minWidth: "fit-content",
+        height: "75vh",
         minHeight: 0,
         borderRadius: "20px",
         background: 'rgba(26,25,25,0.4)'
@@ -18,6 +28,8 @@ export default function Post() {
     >
       <Box display="flex" justifyContent="space-between" marginBottom="20px">
         <User />
+     
+
         <Box display="flex" alignItems="center" sx={{fontSize: "15px", color: "#929292"}}>
           <LocationOn />
           Brazil
@@ -33,14 +45,14 @@ export default function Post() {
         style={{ marginBottom: "15px" }}
         alt="rainforest"
       ></img>
-      <Typography marginBottom="50px">
+      <Typography marginBottom="30px">
         Every year, 1000000 trees are cut down to make room for agriculture and
         industry.
       </Typography>
       <Box display="flex" justifyContent="space-between">
         <Box>
           <IconButton aria-label="fingerprint" sx={{ marginLeft: "-10px" }}>
-            <Favorite style={{ color: "white" }} />
+            <Favorite style={{ color: liked ? '#B8124D' : 'white'}} onClick={handleClick}/>
           </IconButton>
           30000
         </Box>
