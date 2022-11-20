@@ -1,4 +1,4 @@
-import BasicRating from "./Stars";
+import { BasicRating } from "./select";
 
 export default function Charity(props: any) {
   const imageSrc = props.img;
@@ -7,7 +7,7 @@ export default function Charity(props: any) {
       <img src={imageSrc} alt="Charity Logo"></img>
       <h4>{props.name}</h4>
       <BasicRating></BasicRating>
-      <p>`{props.numRatings} Ratings`</p>
+      <p>{props.numRatings} Ratings</p>
     </div>
   );
 }

@@ -3,8 +3,29 @@ import Post from "./Post";
 import SidePanel from "./SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
+import Charities from "./Charities";
 
 export default function MainPage(props: any) {
+  const [takeAction, setTakeAction] = React.useState(false);
+
+  const charity1 = {
+    logo: "/redcross.jpg",
+    name: "Canadian RedCross",
+    trustLevel: 4,
+    ratings: 30000,
+    key: 1,
+  };
+
+  const charity2 = {
+    logo: "redcross.jpg",
+    name: "World Health Organization",
+    trustLevel: 2,
+    ratings: 2415,
+    key: 2,
+  };
+
+  const orgs = [charity1, charity2];
+
   return (
     <>
       <Background />
@@ -14,7 +35,10 @@ export default function MainPage(props: any) {
             <SidePanel />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Post />
+            {!takeAction && (
+              <Post takeAction={takeAction} setTakeAction={setTakeAction} />
+            )}
+            {takeAction && <Charities charities={orgs} />}
           </Grid>
           <Grid item xs={12} md={3}></Grid>
         </Container>
@@ -36,14 +60,14 @@ const Background = styled("div")`
     left: 0;
     z-index: -100;
   }
-`
+`;
 
 const Container = styled(Grid)`
   && {
   }
-`
+`;
 
-const ContainerOutter = styled('div')`
+const ContainerOutter = styled("div")`
   && {
     position: fixed;
     top: 0px;
@@ -55,4 +79,4 @@ const ContainerOutter = styled('div')`
     box-sizing: border-box;
     height: 100%;
   }
-`
+`;

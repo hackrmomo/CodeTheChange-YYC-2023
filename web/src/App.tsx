@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+
 import Post from "./Post";
 import SidePanel from "./SidePanel";
 import Charities from "./Charities";
@@ -20,25 +20,8 @@ import { styled } from "@mui/system";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 export default function App() {
-  const charity1 = {
-    logo: "/redcross.jpg",
-    name: "Canadian RedCross",
-    trustLevel: 4,
-    ratings: 30000,
-  };
-
-  const charity2 = {
-    logo: "redcross.jpg",
-    name: "World Health Organization",
-    trustLevel: 2,
-    ratings: 2415,
-  };
-
-  const orgs = [charity1, charity2];
-
   return (
     <>
-      <Charities charities={orgs}></Charities>
       <Container>
         <ContainerInner>
           <Navbar />
