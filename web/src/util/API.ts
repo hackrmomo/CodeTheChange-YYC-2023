@@ -1,15 +1,17 @@
 export type Post = {
-  title: String;
-  handle: String;
-  description: String;
-  votes: any;
+  authorID: string;
+  createdAt: string;
+  description: string;
+  id: string;
+  title: string;
 };
+
+export type PostState = Post & {likes: string};
 
 export const fetchTrendingPosts = async () => {
   const endpoint = `http://localhost:3000/posts/trending`;
   const data = await (await fetch(endpoint)).json();
 
-  return data.results.map((post: Post) => ({
-    ...post,
-  }));
+  return data.popularPosts.map((post: Post) => ({...post, likes: 3}))
+
 };

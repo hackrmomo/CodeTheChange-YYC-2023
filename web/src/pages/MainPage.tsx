@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Post from "../components/Post";
+import PostView from "../components/PostView";
 import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
-import { fetchTrendingPosts } from "../util/API";
+import { fetchTrendingPosts, PostState } from "../util/API";
+import { json } from "stream/consumers";
+import { stringify } from "querystring";
 
 const MAX_POST_LIMIT = 10;
 
 export default function MainPage(props: any) {
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostState[]>([]);
   const [number, setNumber] = useState(0);
 
   const loadPosts = async () => {
@@ -19,14 +21,14 @@ export default function MainPage(props: any) {
     setNumber(trendingPosts.length);
     setPosts(trendingPosts);
 
-    console.log(trendingPosts);
-
     setLoading(false);
   };
 
   useEffect(() => {
-    console.log("Use Effect!");
-    loadPosts();
+    if (number === 0) {
+      console.log("load posts!")
+      loadPosts();
+    }
   });
 
   return (
@@ -38,7 +40,8 @@ export default function MainPage(props: any) {
             <SidePanel />
           </Grid>
           <Grid item xs={12} md={6}>
-            {!loading && <Post />}
+            {/* {!loading && <PostView title={"test"} likes={69}/>} */}
+            {/* {JSON.stringify(posts)} */}
           </Grid>
           <Grid item xs={12} md={3}></Grid>
         </Container>

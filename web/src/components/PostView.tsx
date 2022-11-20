@@ -2,7 +2,7 @@ import { Box, Typography, IconButton, Button } from "@mui/material";
 import User from "./User";
 import { LocationOn, Favorite } from "@mui/icons-material";
 
-export default function Post() {
+export default function PostView(props:any) {
   return (
     <Box
       sx={{
@@ -22,7 +22,8 @@ export default function Post() {
         </Box>
       </Box>
       <Typography variant="h5" marginBottom="15px">
-        STOP DEFORESTATION IN THE AMAZON
+        {/* <span dangerouslySetInnerHTML={{__html: title}}/> */}
+        {props.title}
       </Typography>
       <img
         width="100%"
@@ -38,7 +39,7 @@ export default function Post() {
           <IconButton aria-label="fingerprint" sx={{ marginLeft: "-10px" }}>
             <Favorite style={{ color: "white" }} />
           </IconButton>
-          30000
+            {props.likes}
         </Box>
         <Button
           variant="contained"

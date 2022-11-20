@@ -1,10 +1,10 @@
 import React from "react";
-import Post from "../components/Post";
+import Post from "./PostView";
 import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 
-export default function MainLayout(props: any,) {
+export default function MainLayout(props: any) {
   return (
     <>
       <Background />
