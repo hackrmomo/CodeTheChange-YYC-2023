@@ -49,6 +49,7 @@ export default function SidePanel() {
         <StyledNavLink
           to="/new-post"
           style={({ isActive }) => (isActive ? selected : undefined)}
+          // onClick={}
           end
         >
           <AddCircleOutline style={{ marginRight: "10px" }} />
