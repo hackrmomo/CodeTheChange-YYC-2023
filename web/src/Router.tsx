@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import MainPage from "./pages/MainPage";
-import NewPostPage from "./pages/NewPostPage";
 
 import { styled } from "@mui/system";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { NewPostPage } from "./pages/NewPostPage";
 
 export default function Router() {
+  
   return (
     <>
       <Container>
@@ -22,7 +23,7 @@ export default function Router() {
               path="/new-events"
               element={<MainPage newEvents={true} />}
             />
-            <Route path="/new-post" element={<NewPostPage newPost={true} />} />
+            <Route path="/new-post" element={<NewPostPage />} />
           </Routes>
         </ContainerInner>
       </Container>

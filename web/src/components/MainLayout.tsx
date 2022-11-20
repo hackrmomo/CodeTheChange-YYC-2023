@@ -4,7 +4,7 @@ import SidePanel from "../components/SidePanel";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 
-export default function MainLayout(props: any) {
+export default function MainLayout(props: any,) {
   return (
     <>
       <Background />
@@ -14,7 +14,7 @@ export default function MainLayout(props: any) {
             <SidePanel />
           </Grid>
           <Grid item xs={12} md={6}>
-            
+            {props.children}
           </Grid>
           <Grid item xs={12} md={3}></Grid>
         </Container>
@@ -36,14 +36,14 @@ const Background = styled("div")`
     left: 0;
     z-index: -100;
   }
-`
+`;
 
 const Container = styled(Grid)`
   && {
   }
-`
+`;
 
-const ContainerOutter = styled('div')`
+const ContainerOutter = styled("div")`
   && {
     position: fixed;
     top: 0px;
@@ -55,4 +55,4 @@ const ContainerOutter = styled('div')`
     box-sizing: border-box;
     height: 100%;
   }
-`
+`;

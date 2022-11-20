@@ -1,11 +1,8 @@
 import React from "react";
 import { styled } from "@mui/system";
 
-// Styles
-import "./PostForm.css";
-
 // Images
-import mainLogo from "./images/pfp.jpg";
+import mainLogo from "../images/pfp.jpg";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 type Props = {

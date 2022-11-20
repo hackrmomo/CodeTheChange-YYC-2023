@@ -36,14 +36,14 @@ const Background = styled("div")`
     left: 0;
     z-index: -100;
   }
-`
+`;
 
 const Container = styled(Grid)`
   && {
   }
-`
+`;
 
-const ContainerOutter = styled('div')`
+const ContainerOutter = styled("div")`
   && {
     position: fixed;
     top: 0px;
@@ -55,4 +55,4 @@ const ContainerOutter = styled('div')`
     box-sizing: border-box;
     height: 100%;
   }
-`
+`;

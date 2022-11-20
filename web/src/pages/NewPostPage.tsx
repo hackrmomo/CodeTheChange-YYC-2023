@@ -1,14 +1,12 @@
 import React from "react";
-import Post from "../components/Post";
-import SidePanel from "../components/SidePanel";
-import { Grid } from "@mui/material";
-import { styled } from "@mui/system";
-import MainLayout from "../components/MainLayout"
+import MainLayout from "../components/MainLayout";
+import NewPost from "../components/NewPost";
 
-export default function NewPostPage(props: any) {
-    return <>
-      <MainLayout>
-        
-      </MainLayout>
-    </>;
-}
+export const NewPostPage = (props: any) => {
+    return(
+        // <MainLayout children={<NewPost callback={() => {console.log("success!")}}/>}/>
+        <MainLayout>
+            <NewPost callback={() => {console.log("success!")}}/>
+        </MainLayout>
+    )
+};
