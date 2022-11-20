@@ -68,7 +68,7 @@ export default function SearchFieldChip() {
             }}
             size="small"
             placeholder="Search Causes"
-            InputProps={{ disableUnderline: true }}
+            // InputProps={{ disableUnderline: true }}
           />
         </>
       )}
