@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import MainPage from "./pages/MainPage";
 
 import { styled } from "@mui/system";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { InternalDataRefresh } from "./util/dataPersistor";
 
 export default function Router() {
@@ -14,16 +14,11 @@ export default function Router() {
           <ContainerInner>
             <Navbar />
             <Routes>
-              <Route path="/" element={<Navigate to="/world-trending" />} />
-              <Route
-                path="/world-trending"
-                element={<MainPage worldTrending={true} />}
-              />
-              <Route
-                path="/new-events"
-                element={<MainPage newEvents={true} />}
-              />
-              <Route path="/new-post" element={<MainPage newPost={true} />} />
+              <Route path="/" element={<MainPage worldTrending />} />
+              <Route path="/world-trending" element={<MainPage worldTrending />} />
+              <Route path="/new-events" element={<MainPage newEvents />} />
+              <Route path="/new-post" element={<MainPage newPost />} />
+              <Route path="/charity/:handle" element={<MainPage charity />} />
             </Routes>
           </ContainerInner>
         </Container>
