@@ -59,6 +59,7 @@ export default function SearchFieldChip() {
           <TextField   variant="standard" 
 
             {...params}
+            InputProps={{ ...params.InputProps, disableUnderline: true }}
             sx={{
               
               input: { color: "white", border: 0, outline: 0,fontSize: '14px' },
@@ -68,7 +69,6 @@ export default function SearchFieldChip() {
             }}
             size="small"
             placeholder="Search Causes"
-            // InputProps={{ disableUnderline: true }}
           />
         </>
       )}
