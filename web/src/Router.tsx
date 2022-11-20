@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "./Navbar";
-import MainPage from "./MainPage";
+import Navbar from "./components/Navbar";
+import MainPage from "./pages/MainPage";
 
 import { styled } from "@mui/system";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-export default function App() {
+export default function Router() {
   return (
     <>
       <Container>

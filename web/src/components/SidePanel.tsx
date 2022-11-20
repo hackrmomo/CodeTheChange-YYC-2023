@@ -4,7 +4,8 @@ import { Public, Bolt, AddCircleOutline } from "@mui/icons-material";
 
 import SearchFieldChip from "./SearchFieldChip";
 import { NavLink } from "react-router-dom";
-import "./SidePanel.css";
+
+import { styled } from "@mui/system";
 
 export default function SidePanel() {
   const selected = {
@@ -22,41 +23,47 @@ export default function SidePanel() {
           marginBottom: "10px",
         }}
       >
-        <NavLink
+        <StyledNavLink
           to="/world-trending"
           style={({ isActive }) => (isActive ? selected : undefined)}
-          className="navlink"
           end
         >
           <Public style={{ marginRight: "10px" }} />
           WORLD TRENDING
-        </NavLink>
+        </StyledNavLink>
       </Box>
       <Box
         style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
       >
-        <NavLink
+        <StyledNavLink
           to="/new-events"
           style={({ isActive }) => (isActive ? selected : undefined)}
-          className="navlink"
           end
         >
           {" "}
           <Bolt style={{ marginRight: "10px" }} />
           NEW EVENTS
-        </NavLink>
+        </StyledNavLink>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <NavLink
+        <StyledNavLink
           to="/new-post"
           style={({ isActive }) => (isActive ? selected : undefined)}
-          className="navlink"
           end
         >
           <AddCircleOutline style={{ marginRight: "10px" }} />
           NEW POST
-        </NavLink>
+        </StyledNavLink>
       </Box>
     </nav>
   );
 }
+
+const StyledNavLink = styled(NavLink)`
+  && {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+`
