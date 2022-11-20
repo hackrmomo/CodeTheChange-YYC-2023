@@ -12,33 +12,47 @@ export default function Post() {
         padding: "40px 50px",
         minWidth: "fit-content",
         minHeight: 0,
+        borderRadius: "10px",
       }}
     >
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" marginBottom="20px">
         <User />
-        <Box>
+        <Box display="flex" alignItems="center">
           <LocationOn />
           Brazil
         </Box>
       </Box>
-      <Typography variant="h5"> STOP DEFORESTATION IN THE AMAZON</Typography>
+      <Typography variant="h5" marginBottom="15px">
+        STOP DEFORESTATION IN THE AMAZON
+      </Typography>
       <img
         width="100%"
         height="100%"
         src="https://ichef.bbci.co.uk/news/976/cpsprodpb/179C0/production/_125840769_hi077252483.jpg"
+        style={{ marginBottom: "15px" }}
       ></img>
-      <Typography>
+      <Typography marginBottom="50px">
         Every year, 1000000 trees are cut down to make room for agriculture and
         industry.
       </Typography>
       <Box display="flex" justifyContent="space-between">
         <Box>
-          <IconButton aria-label="fingerprint" color="secondary">
-            <Favorite />
+          <IconButton aria-label="fingerprint" sx={{ marginLeft: "-10px" }}>
+            <Favorite style={{ color: "white" }} />
           </IconButton>
           30000
         </Box>
-        <Button variant="contained">Take Action</Button>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#B8124D",
+            "&:hover": {
+              backgroundColor: "#B8124D",
+            },
+          }}
+        >
+          Take Action
+        </Button>
       </Box>
     </Box>
   );
