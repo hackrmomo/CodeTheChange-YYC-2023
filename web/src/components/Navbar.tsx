@@ -1,5 +1,4 @@
 import { Box, Typography, IconButton } from "@mui/material";
-import {useEffect, useRef} from "react"
 import React from "react";
 
 import { Link } from "react-router-dom";
@@ -7,18 +6,10 @@ import { AccountCircle } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import { AuthContainer } from "./AuthContainer";
 
-
-
-
 export default function Navbar() {
   const [isAuthShown, setIsAuthShown] = React.useState(false);
-  
-  
-
   return (
     <>
-     
-      
       {isAuthShown && <AuthContainer close={() => { setIsAuthShown(false) }} />}
       <NavBarBox>
         <Logo>
