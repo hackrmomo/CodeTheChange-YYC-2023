@@ -20,12 +20,12 @@ export default function SidePanel() {
         style={{
           display: "flex",
           alignItems: "center",
-          marginBottom: "10px",
+          marginBottom: "20px",
         }}
       >
         <StyledNavLink
           to="/world-trending"
-          style={({ isActive }) => (isActive ? selected : undefined)}
+          style={({ isActive }) => {return {fontSize: isActive ? '20px':''}}}
           end
         >
           <Public style={{ marginRight: "10px" }} />
@@ -33,11 +33,11 @@ export default function SidePanel() {
         </StyledNavLink>
       </Box>
       <Box
-        style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
+        style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
       >
         <StyledNavLink
           to="/new-events"
-          style={({ isActive }) => (isActive ? selected : undefined)}
+          style={({ isActive }) => {return {fontSize: isActive ? '20px':''}}}
           end
         >
           {" "}
@@ -48,7 +48,7 @@ export default function SidePanel() {
       <Box style={{ display: "flex", alignItems: "center" }}>
         <StyledNavLink
           to="/new-post"
-          style={({ isActive }) => (isActive ? selected : undefined)}
+          style={({ isActive }) => {return {fontSize: isActive ? '20px':''}}}
           end
         >
           <AddCircleOutline style={{ marginRight: "10px" }} />
@@ -65,5 +65,6 @@ const StyledNavLink = styled(NavLink)`
     color: white;
     display: flex;
     align-items: center;
+    
   }
 `

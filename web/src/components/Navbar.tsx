@@ -29,7 +29,7 @@ const Logo = styled(Typography)`
   && {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 34px;
     a {
       text-decoration: none;
     }

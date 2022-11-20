@@ -18,7 +18,7 @@ export default function Post() {
     >
       <Box display="flex" justifyContent="space-between" marginBottom="20px">
         <User />
-        <Box display="flex" alignItems="center">
+        <Box display="flex" alignItems="center" sx={{fontSize: "15px", color: "#929292"}}>
           <LocationOn />
           Brazil
         </Box>
