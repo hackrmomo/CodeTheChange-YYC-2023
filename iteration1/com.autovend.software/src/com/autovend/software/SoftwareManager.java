@@ -10,17 +10,19 @@ import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.products.BarcodedProduct;
 import static com.autovend.external.ProductDatabases.BARCODED_PRODUCT_DATABASE;
 
-public class SoftwareManager {
+public class SoftwareManager extends AbstractSoftware<SoftwareManagerObserver> {
 	private SelfCheckoutStation selfCheckoutStation;
 	private BigDecimal currentTotal;
 	private double currentWeightInGramsScanningArea;
 	private double currentWeightInGramsBaggingArea;
+	private double expectedWeightInGramsBaggingArea;
 	
 	public SoftwareManager(SelfCheckoutStation selfCheckoutStation) {
 		this.selfCheckoutStation = selfCheckoutStation;
 		this.currentTotal = new BigDecimal(0);
 		this.currentWeightInGramsScanningArea = 0;
 		this.currentWeightInGramsBaggingArea = 0;
+		this.expectedWeightInGramsBaggingArea = 0;
 	}
 	
 	public void blockCheckoutSystem() {
@@ -82,10 +84,19 @@ public class SoftwareManager {
 					" did not detect any weight on the scale, please purchase a greater quantity of your item");
 			itemPrice = itemPrice.multiply(new BigDecimal(this.currentWeightInGramsScanningArea / 1000));
 		}
+		this.currentTotal.add(itemPrice);
 		
-		
-		this.currentTotal = this.currentTotal.add(itemPrice);
-		double expectedBaggingAreaWeight = this.currentWeightInGramsBaggingArea + this.currentWeightInGramsScanningArea;
+		/*
+		 * If the item is a "per kilogram" item, then we expect everything from the scale to be moved to the bagging
+		 * area. Otherwise, if it is a "per-unit" priced item, then, we can just fetch its weight from the database as
+		 * it is a single unit.
+		 */
+		if (this.currentWeightInGramsScanningArea > 0) {
+			this.expectedWeightInGramsBaggingArea += this.currentWeightInGramsScanningArea;
+		} else {
+			this.expectedWeightInGramsBaggingArea += item.getExpectedWeight();
+		}
 	}
+	
 	
 }
